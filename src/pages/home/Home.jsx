@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCountries } from '../../redux/features/continentsSlice';
+import Countries from '../../components/countries/Countries';
+import './Home.css';
 
 const Home = () => {
   const { continents, status } = useSelector((store) => store.continents);
@@ -14,9 +16,9 @@ const Home = () => {
 
   return (
     <div>
-      <div>
+      <div className="countries-container">
         {continents.map((continent) => (
-          <div key={continent.iso3}>{continent.country}</div>
+          <Countries key={continent.country} {...continent} />
         ))}
       </div>
     </div>
